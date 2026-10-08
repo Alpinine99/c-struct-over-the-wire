@@ -5,12 +5,17 @@
 #include <stdlib.h>
 #include <packet.h>
 
-int main() {
+int main(int argc, char **argv) {
+  if (argc != 3) {
+    fprintf(stderr, "E: wrong usage\v%s <ip> <port>\n", argv[0]);
+    return 1;
+  }
+  int port = atoi(argv[2]);
     int fd;
     struct sockaddr_in s_sock;
     s_sock.sin_family = AF_INET;
-    s_sock.sin_port = htons(8080);
-    inet_pton(AF_INET, "127.0.0.1", &s_sock.sin_addr);
+    s_sock.sin_port = htons(port);
+    inet_pton(AF_INET, argv[1], &s_sock.sin_addr);
 
     fd = socket(AF_INET, SOCK_STREAM, 0);
 
