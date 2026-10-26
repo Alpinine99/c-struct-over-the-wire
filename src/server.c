@@ -31,7 +31,6 @@ int main() {
 ACCEPT:
     if ((client_fd = accept(server_fd, (struct sockaddr*)&client, &s_len)) < 0) {
         perror("accept");
-        close(client_fd);
         goto ACCEPT;
     }
 

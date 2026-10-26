@@ -20,5 +20,5 @@ build:
 clean:
 	$(RM) -r bin build
 
-PHONY: all clean
+.PHONY: all clean
 
